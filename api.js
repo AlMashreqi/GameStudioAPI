@@ -6,8 +6,10 @@ require('dotenv/config');
 
 app.use(bodyParser.json());
 
-const signupRouter = require('./routes/signup');
+const signupRouter = require('./routes/api/auth/signup');
+const forgotPasswordRouter = require('./routes/api/auth/forgot-password');
 
+app.use('/api/users/forgot-password', forgotPasswordRouter);
 app.use('/api/users/signup', signupRouter);
 
 mongoose.connect(process.env.DB_CONNECTION, 
